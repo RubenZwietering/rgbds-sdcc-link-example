@@ -1,0 +1,4 @@
+section "start", ROM0[$0100]
+	call _main
+loop:	dec a
+	jr loop
