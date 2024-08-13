@@ -4,7 +4,7 @@
 all: 
 	rgbasm -o start.o start.z80
 	sdcc -c -msm83 main.c
-	rgblink -o test.gb start.o main.rel
+	rgblink -l sdcc.lkr -o test.gb start.o main.rel
 
 clean: 
 	rm -f start.o
