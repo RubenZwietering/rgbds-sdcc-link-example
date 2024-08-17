@@ -1,4 +1,20 @@
-section "start", ROM0[$0100]
-	call _main
-loop:	dec a
-	jr loop
+section "entry", ROM0[$0100]
+	jp start
+
+section "header", ROM0[$0104]
+	ds $150 - $104, 0
+
+section "start", ROM0
+start:
+	ld de, 0
+
+	call _function0 ; bc should be $0001
+	ld b, b			; breakpoint in some emulators
+
+	ld d, b
+	ld e, c
+	
+	call _function1 ; bc should be $0003
+	ld b, b			; breakpoint
+
+	stop
